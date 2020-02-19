@@ -33,6 +33,7 @@ function  CurrentYear : word;
 function  SameDate(const date1,date2:TDateTime) : boolean;
 function  SameTime(const date1,date2:TDateTime) : boolean;
 
+{$IFDEF MSWINDOWS}
 function  GetGMTTime(const DT:TDateTime) : TDateTime;
 function  GetLocalTime(const DT:TDateTime) : TDateTime;
 function  GetTimeZoneName: string;
@@ -41,6 +42,7 @@ function  GMTNow : TDateTime;
 function  GMTDate : TDateTime;
 function  GMTTime : TDateTime;
 function  IsDaylightSavingTime : boolean;
+{$ENDIF}
 
 type
   THolidayRegion = (hrBayern, hrBadenWuerttemberg, hrBerlin, hrBrandenburg,
@@ -213,7 +215,7 @@ begin
   result := abs(frac(date1) - frac(date2)) < OneMillisecond;
 end;
 
-
+{$IFDEF MSWINDOWS}
 //========================= Zeitzonen ==========================================
 
 function GetLocalTZBias : longint;
@@ -319,6 +321,7 @@ begin
   result := (GetTimeZoneInformation(TZ)=TIME_ZONE_ID_DAYLIGHT);
 end;
 
+{$ENDIF}
 
 //======================= Feiertage ============================================
 
