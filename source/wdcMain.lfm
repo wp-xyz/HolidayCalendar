@@ -9227,7 +9227,7 @@ object MainForm: TMainForm
   }
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
-  LCLVersion = '1.5'
+  LCLVersion = '2.1.0.0'
   object Panel1: TPanel
     Left = 0
     Height = 625
@@ -9513,20 +9513,24 @@ object MainForm: TMainForm
               AxisPen.Visible = True
               Marks.Distance = 6
               Marks.Format = '%2:s'
+              Marks.LabelBrush.Style = bsClear
               Marks.OverlapPolicy = opHideNeighbour
               Marks.Source = UserDefinedChartSource
               Marks.Style = smsLabel
               Minors = <>
+              Title.LabelBrush.Style = bsClear
             end          
             item
               Grid.Color = clSilver
               Marks.Distance = 4
+              Marks.LabelBrush.Style = bsClear
               Minors = <>
               Title.Distance = 6
               Title.LabelFont.Orientation = 900
               Title.LabelFont.Style = [fsBold]
               Title.Visible = True
               Title.Caption = 'Feiertage und Brückentage'
+              Title.LabelBrush.Style = bsClear
             end>
           BackColor = 16771304
           Foot.Brush.Color = clBtnFace
@@ -9548,12 +9552,12 @@ object MainForm: TMainForm
           Color = clWhite
           object BarSeries: TBarSeries
             Legend.Multiplicity = lmStyle
+            Title = 'Feiertage'
+            BarBrush.Color = clNavy
             Marks.Visible = False
             Marks.Format = '%0:.9g'
             Marks.Style = smsValue
             Marks.YIndex = -1
-            Title = 'Feiertage'
-            BarBrush.Color = clNavy
             Source = UserDefinedChartSource
             Styles = ChartStyles
           end

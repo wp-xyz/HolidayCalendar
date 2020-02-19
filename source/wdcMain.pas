@@ -79,17 +79,17 @@ implementation
 uses
   Math, DateUtils,
   TAChartUtils,
-  wdcTools, wdcDateTools;
+  wdcDateTools;
 
 
 { TMainForm }
 
 function SortDates(List: TStringList; Index1, Index2: Integer): Integer;
 var
-  diff1, diff2: integer;
+  diff1, diff2: PtrInt;
 begin
-  diff1 := integer(List.Objects[Index1]);
-  diff2 := integer(List.Objects[Index2]);
+  diff1 := PtrInt(List.Objects[Index1]);
+  diff2 := PtrInt(List.Objects[Index2]);
   result := CompareValue(diff1, diff2);
 end;
 
@@ -124,7 +124,7 @@ end;
 procedure TMainForm.CalcByRegions;
 var
   Holidays: TStringList;
-  List: TDateArray;
+  List: TDateArray = nil;
   i, j, k, k0, n: Integer;
   c, r: Integer;
   year: Integer;
@@ -151,7 +151,7 @@ begin
         for j:=Low(List) to High(List) do begin
           k := Holidays.Add(WhichHoliday(List[j]));
           if Holidays.Objects[k] = nil then
-            Holidays.Objects[k] := TObject(integer(round(List[j] - startdate)));
+            Holidays.Objects[k] := TObject(PtrInt(round(List[j] - startdate)));
           // Tage ab 1.1., zum Sortieren
         end;
       end;
@@ -173,7 +173,7 @@ begin
       RowCount := Holidays.Count + FixedRows + 3;
       for r:=FixedRows to RowCount-4 do begin
         j := r - FixedRows;
-        d := startdate + integer(Holidays.Objects[j]);
+        d := startdate + PtrInt(Holidays.Objects[j]);
         Cells[0, r] := Holidays[j];
         Cells[1, r] := FormatDateTime('DDD, DD.MM.', d);
       end;
@@ -261,7 +261,7 @@ begin
         d := List[i];
         k := Holidays.Add(WhichHoliday(d));
         if Holidays.Objects[k] = nil then
-          Holidays.Objects[k] := TObject(integer(round(d - startdate)));
+          Holidays.Objects[k] := TObject(PtrInt(round(d - startdate)));
           // Tage ab 1.1., zum Sortieren
       end;
     end;
