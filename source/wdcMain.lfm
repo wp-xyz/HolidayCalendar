@@ -1,12 +1,12 @@
 object MainForm: TMainForm
-  Left = 182
-  Height = 625
-  Top = 135
-  Width = 1044
+  Left = 296
+  Height = 600
+  Top = 136
+  Width = 1000
   ActiveControl = RgXData
   Caption = 'Feiertagskalender'
-  ClientHeight = 625
-  ClientWidth = 1044
+  ClientHeight = 600
+  ClientWidth = 1000
   Icon.Data = {
     EE7F0400000001000B002020100001000400E8020000B6000000181810000100
     0400E80100009E03000010101000010004002801000086050000202000000100
@@ -9229,34 +9229,42 @@ object MainForm: TMainForm
   OnCreate = FormCreate
   LCLVersion = '2.1.0.0'
   object Panel1: TPanel
-    Left = 0
-    Height = 625
-    Top = 0
-    Width = 168
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    Left = 8
+    Height = 584
+    Top = 8
+    Width = 184
     Align = alLeft
+    BorderSpacing.Left = 8
+    BorderSpacing.Top = 8
+    BorderSpacing.Bottom = 8
     BevelOuter = bvNone
-    BorderWidth = 8
-    ClientHeight = 625
-    ClientWidth = 168
+    ClientHeight = 584
+    ClientWidth = 184
     TabOrder = 0
     object RgXData: TRadioGroup
-      Left = 8
-      Height = 75
-      Top = 8
-      Width = 152
+      AnchorSideLeft.Control = Panel1
+      AnchorSideTop.Control = Panel1
+      Left = 0
+      Height = 72
+      Top = 0
+      Width = 184
       Align = alTop
       AutoFill = True
+      AutoSize = True
       Caption = 'Verglichen werden'
-      ChildSizing.LeftRightSpacing = 6
+      ChildSizing.LeftRightSpacing = 12
       ChildSizing.TopBottomSpacing = 6
+      ChildSizing.VerticalSpacing = 2
       ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
       ChildSizing.EnlargeVertical = crsHomogenousChildResize
       ChildSizing.ShrinkHorizontal = crsScaleChilds
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 1
-      ClientHeight = 55
-      ClientWidth = 148
+      ClientHeight = 52
+      ClientWidth = 180
       ItemIndex = 0
       Items.Strings = (
         'Jahre'
@@ -9265,182 +9273,33 @@ object MainForm: TMainForm
       OnClick = RgXDataClick
       TabOrder = 0
     end
-    object PanelYearDependence: TPanel
-      Left = 8
-      Height = 128
-      Top = 88
-      Width = 152
-      BevelOuter = bvNone
-      ClientHeight = 128
-      ClientWidth = 152
-      TabOrder = 1
-      object Label3: TLabel
-        Left = 8
-        Height = 15
-        Top = 8
-        Width = 65
-        Caption = 'Bundesland:'
-        ParentColor = False
-      end
-      object CbRegion: TComboBox
-        Left = 2
-        Height = 23
-        Top = 25
-        Width = 148
-        DropDownCount = 24
-        ItemHeight = 15
-        ItemIndex = 0
-        Items.Strings = (
-          'Bayern'
-          'Baden-Württemberg'
-          'Berlin'
-          'Brandenburg'
-          'Bremen'
-          'Hamburg'
-          'Hessen'
-          'Mecklenburg-Vorpommern'
-          'Niedersachsen'
-          'Nordrhein-Westfalen'
-          'Rheinland-Pfalz'
-          'Saarland'
-          'Sachsen'
-          'Sachsen-Anhalt'
-          'Schleswig-Holstein'
-          'Thüringen'
-        )
-        OnSelect = CbRegionSelect
-        Style = csDropDownList
-        TabOrder = 0
-        Text = 'Bayern'
-      end
-      object Label1: TLabel
-        Left = 8
-        Height = 15
-        Top = 95
-        Width = 15
-        Caption = 'bis'
-        FocusControl = EdEndYear
-        ParentColor = False
-      end
-      object Label2: TLabel
-        Left = 8
-        Height = 15
-        Top = 63
-        Width = 20
-        Caption = 'von'
-        FocusControl = EdStartYear
-        ParentColor = False
-      end
-      object EdEndYear: TSpinEdit
-        Left = 88
-        Height = 23
-        Top = 92
-        Width = 62
-        MaxValue = 2100
-        MinValue = 1900
-        OnChange = EdEndYearChange
-        TabOrder = 2
-        Value = 2015
-      end
-      object EdStartYear: TSpinEdit
-        Left = 88
-        Height = 23
-        Top = 60
-        Width = 62
-        MaxValue = 2100
-        MinValue = 1900
-        OnChange = EdStartYearChange
-        TabOrder = 1
-        Value = 2005
-      end
-    end
-    object PanelRegionDependence: TPanel
-      Left = 32
-      Height = 432
-      Top = 192
-      Width = 152
-      BevelOuter = bvNone
-      ClientHeight = 432
-      ClientWidth = 152
-      TabOrder = 2
-      Visible = False
-      object Label4: TLabel
-        Left = 8
-        Height = 15
-        Top = 8
-        Width = 75
-        Caption = 'Bundesländer:'
-        ParentColor = False
-      end
-      object CbRegions: TCheckListBox
-        Left = 2
-        Height = 280
-        Top = 24
-        Width = 148
-        ItemHeight = 0
-        OnClickCheck = CbRegionsClickCheck
-        TabOrder = 0
-      end
-      object Label5: TLabel
-        Left = 8
-        Height = 15
-        Top = 315
-        Width = 24
-        Caption = 'Jahr:'
-        FocusControl = EdYear
-        ParentColor = False
-      end
-      object EdYear: TSpinEdit
-        Left = 88
-        Height = 23
-        Top = 312
-        Width = 62
-        MaxValue = 2100
-        MinValue = 1900
-        OnChange = EdStartYearChange
-        TabOrder = 1
-        Value = 2012
-      end
-      object RgSortRegions: TRadioGroup
-        Left = 2
-        Height = 81
-        Top = 344
-        Width = 145
-        AutoFill = True
-        Caption = 'Sortierung'
-        ChildSizing.LeftRightSpacing = 6
-        ChildSizing.TopBottomSpacing = 6
-        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
-        ChildSizing.EnlargeVertical = crsHomogenousChildResize
-        ChildSizing.ShrinkHorizontal = crsScaleChilds
-        ChildSizing.ShrinkVertical = crsScaleChilds
-        ChildSizing.Layout = cclLeftToRightThenTopToBottom
-        ChildSizing.ControlsPerLine = 1
-        ClientHeight = 61
-        ClientWidth = 141
-        ItemIndex = 0
-        Items.Strings = (
-          'alphabetisch'
-          'Anzahl'
-        )
-        OnClick = BtnCalcClick
-        TabOrder = 2
-      end
-    end
     object PanelCalcButton: TPanel
-      Left = 24
-      Height = 45
-      Top = 336
-      Width = 152
+      AnchorSideLeft.Control = Panel1
+      AnchorSideTop.Control = Notebook
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Panel1
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = Panel1
+      AnchorSideBottom.Side = asrBottom
+      Left = 0
+      Height = 37
+      Top = 547
+      Width = 184
+      Anchors = [akLeft, akRight, akBottom]
       BevelOuter = bvNone
-      ClientHeight = 45
-      ClientWidth = 152
-      TabOrder = 3
+      ClientHeight = 37
+      ClientWidth = 184
+      TabOrder = 1
       object BtnCalc: TButton
-        Left = 32
+        AnchorSideLeft.Control = PanelCalcButton
+        AnchorSideLeft.Side = asrCenter
+        AnchorSideTop.Control = Bevel1
+        AnchorSideTop.Side = asrBottom
+        Left = 52
         Height = 25
-        Top = 13
+        Top = 12
         Width = 80
+        BorderSpacing.Top = 8
         Caption = 'Rechnen'
         OnClick = BtnCalcClick
         TabOrder = 0
@@ -9449,41 +9308,304 @@ object MainForm: TMainForm
         Left = 0
         Height = 4
         Top = 0
-        Width = 152
+        Width = 184
         Align = alTop
         Shape = bsBottomLine
       end
     end
+    object Notebook: TNotebook
+      AnchorSideLeft.Control = Panel1
+      AnchorSideTop.Control = RgXData
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Panel1
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = PanelCalcButton
+      Left = 0
+      Height = 451
+      Top = 88
+      Width = 184
+      PageIndex = 1
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      BorderSpacing.Top = 16
+      BorderSpacing.Bottom = 8
+      TabOrder = 2
+      object PgYear: TPage
+        object PanelYearDependence: TPanel
+          AnchorSideLeft.Control = PgYear
+          AnchorSideTop.Control = PgYear
+          AnchorSideRight.Control = PgYear
+          AnchorSideRight.Side = asrBottom
+          Left = 8
+          Height = 106
+          Top = 8
+          Width = 168
+          Anchors = [akTop, akLeft, akRight]
+          AutoSize = True
+          BorderSpacing.Left = 8
+          BorderSpacing.Top = 8
+          BorderSpacing.Right = 8
+          BorderSpacing.Bottom = 8
+          BevelOuter = bvNone
+          ClientHeight = 106
+          ClientWidth = 168
+          TabOrder = 0
+          object Label3: TLabel
+            AnchorSideLeft.Control = PanelYearDependence
+            AnchorSideTop.Control = PanelYearDependence
+            Left = 0
+            Height = 15
+            Top = 0
+            Width = 65
+            Caption = 'Bundesland:'
+            ParentColor = False
+          end
+          object CbRegion: TComboBox
+            AnchorSideLeft.Control = PanelYearDependence
+            AnchorSideTop.Control = Label3
+            AnchorSideTop.Side = asrBottom
+            AnchorSideRight.Control = PanelYearDependence
+            AnchorSideRight.Side = asrBottom
+            Left = 0
+            Height = 23
+            Top = 17
+            Width = 168
+            Anchors = [akTop, akLeft, akRight]
+            BorderSpacing.Top = 2
+            DropDownCount = 24
+            ItemHeight = 15
+            ItemIndex = 0
+            Items.Strings = (
+              'Bayern'
+              'Baden-Württemberg'
+              'Berlin'
+              'Brandenburg'
+              'Bremen'
+              'Hamburg'
+              'Hessen'
+              'Mecklenburg-Vorpommern'
+              'Niedersachsen'
+              'Nordrhein-Westfalen'
+              'Rheinland-Pfalz'
+              'Saarland'
+              'Sachsen'
+              'Sachsen-Anhalt'
+              'Schleswig-Holstein'
+              'Thüringen'
+            )
+            OnSelect = CbRegionSelect
+            Style = csDropDownList
+            TabOrder = 0
+            Text = 'Bayern'
+          end
+          object Label1: TLabel
+            AnchorSideTop.Control = EdEndYear
+            AnchorSideTop.Side = asrCenter
+            AnchorSideRight.Control = EdEndYear
+            Left = 79
+            Height = 15
+            Top = 87
+            Width = 15
+            Anchors = [akTop, akRight]
+            BorderSpacing.Right = 12
+            Caption = 'bis'
+            FocusControl = EdEndYear
+            ParentColor = False
+          end
+          object Label2: TLabel
+            AnchorSideTop.Control = EdStartYear
+            AnchorSideTop.Side = asrCenter
+            AnchorSideRight.Control = EdStartYear
+            Left = 74
+            Height = 15
+            Top = 56
+            Width = 20
+            Anchors = [akTop, akRight]
+            BorderSpacing.Right = 12
+            Caption = 'von'
+            FocusControl = EdStartYear
+            ParentColor = False
+          end
+          object EdEndYear: TSpinEdit
+            AnchorSideTop.Control = EdStartYear
+            AnchorSideTop.Side = asrBottom
+            AnchorSideRight.Control = PanelYearDependence
+            AnchorSideRight.Side = asrBottom
+            Left = 106
+            Height = 23
+            Top = 83
+            Width = 62
+            Anchors = [akTop, akRight]
+            BorderSpacing.Top = 8
+            MaxValue = 2100
+            MinValue = 1900
+            OnChange = EdEndYearChange
+            TabOrder = 2
+            Value = 2015
+          end
+          object EdStartYear: TSpinEdit
+            AnchorSideTop.Control = CbRegion
+            AnchorSideTop.Side = asrBottom
+            AnchorSideRight.Control = PanelYearDependence
+            AnchorSideRight.Side = asrBottom
+            Left = 106
+            Height = 23
+            Top = 52
+            Width = 62
+            Anchors = [akTop, akRight]
+            BorderSpacing.Top = 12
+            MaxValue = 2100
+            MinValue = 1900
+            OnChange = EdStartYearChange
+            TabOrder = 1
+            Value = 2005
+          end
+        end
+      end
+      object PgRegions: TPage
+        object PanelRegionDependence: TPanel
+          AnchorSideLeft.Control = PgRegions
+          AnchorSideTop.Control = PgRegions
+          AnchorSideRight.Control = PgRegions
+          AnchorSideRight.Side = asrBottom
+          AnchorSideBottom.Control = PgRegions
+          AnchorSideBottom.Side = asrBottom
+          Left = 0
+          Height = 451
+          Top = 0
+          Width = 184
+          Anchors = [akTop, akLeft, akRight, akBottom]
+          BevelOuter = bvNone
+          ClientHeight = 451
+          ClientWidth = 184
+          TabOrder = 0
+          object Label4: TLabel
+            AnchorSideLeft.Control = PanelRegionDependence
+            AnchorSideTop.Control = PanelRegionDependence
+            Left = 0
+            Height = 15
+            Top = 0
+            Width = 75
+            Caption = 'Bundesländer:'
+            ParentColor = False
+          end
+          object CbRegions: TCheckListBox
+            AnchorSideLeft.Control = PanelRegionDependence
+            AnchorSideTop.Control = Label4
+            AnchorSideTop.Side = asrBottom
+            AnchorSideRight.Control = PanelRegionDependence
+            AnchorSideRight.Side = asrBottom
+            AnchorSideBottom.Control = EdYear
+            Left = 0
+            Height = 308
+            Top = 17
+            Width = 184
+            Anchors = [akTop, akLeft, akRight, akBottom]
+            BorderSpacing.Top = 2
+            ItemHeight = 0
+            OnClickCheck = CbRegionsClickCheck
+            TabOrder = 0
+          end
+          object Label5: TLabel
+            AnchorSideLeft.Control = PanelRegionDependence
+            AnchorSideTop.Control = EdYear
+            AnchorSideTop.Side = asrCenter
+            AnchorSideRight.Control = EdYear
+            Left = 76
+            Height = 15
+            Top = 345
+            Width = 24
+            Anchors = [akTop, akRight]
+            BorderSpacing.Right = 12
+            Caption = 'Jahr:'
+            FocusControl = EdYear
+            ParentColor = False
+          end
+          object EdYear: TSpinEdit
+            AnchorSideTop.Side = asrBottom
+            AnchorSideRight.Control = PanelRegionDependence
+            AnchorSideRight.Side = asrBottom
+            AnchorSideBottom.Control = RgSortRegions
+            Left = 112
+            Height = 23
+            Top = 341
+            Width = 72
+            Alignment = taRightJustify
+            Anchors = [akRight, akBottom]
+            BorderSpacing.Top = 16
+            MaxValue = 2100
+            MinValue = 1900
+            OnChange = EdStartYearChange
+            TabOrder = 1
+            Value = 2012
+          end
+          object RgSortRegions: TRadioGroup
+            AnchorSideLeft.Control = PanelRegionDependence
+            AnchorSideTop.Side = asrBottom
+            AnchorSideRight.Control = PanelRegionDependence
+            AnchorSideRight.Side = asrBottom
+            AnchorSideBottom.Control = PanelRegionDependence
+            AnchorSideBottom.Side = asrBottom
+            Left = 0
+            Height = 72
+            Top = 379
+            Width = 184
+            Anchors = [akLeft, akRight, akBottom]
+            AutoFill = True
+            AutoSize = True
+            BorderSpacing.Top = 15
+            Caption = 'Sortierung'
+            ChildSizing.LeftRightSpacing = 12
+            ChildSizing.TopBottomSpacing = 6
+            ChildSizing.VerticalSpacing = 2
+            ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+            ChildSizing.EnlargeVertical = crsHomogenousChildResize
+            ChildSizing.ShrinkHorizontal = crsScaleChilds
+            ChildSizing.ShrinkVertical = crsScaleChilds
+            ChildSizing.Layout = cclLeftToRightThenTopToBottom
+            ChildSizing.ControlsPerLine = 1
+            ClientHeight = 52
+            ClientWidth = 180
+            ItemIndex = 0
+            Items.Strings = (
+              'alphabetisch'
+              'Anzahl'
+            )
+            OnClick = BtnCalcClick
+            TabOrder = 2
+          end
+        end
+      end
+    end
   end
   object Panel2: TPanel
-    Left = 168
-    Height = 625
+    Left = 197
+    Height = 600
     Top = 0
-    Width = 876
+    Width = 803
     Align = alClient
     BevelOuter = bvNone
     BorderWidth = 4
-    ClientHeight = 625
-    ClientWidth = 876
+    ClientHeight = 600
+    ClientWidth = 803
     TabOrder = 1
     object PageControl: TPageControl
       Left = 4
-      Height = 617
+      Height = 592
       Top = 4
-      Width = 868
+      Width = 795
       ActivePage = PgTable
       Align = alClient
       TabIndex = 0
       TabOrder = 0
       object PgTable: TTabSheet
         Caption = 'Tabelle'
-        ClientHeight = 589
-        ClientWidth = 860
+        ClientHeight = 564
+        ClientWidth = 787
         object ResultGrid: TStringGrid
           Left = 0
-          Height = 589
+          Height = 564
           Top = 0
-          Width = 860
+          Width = 787
           Align = alClient
           AlternateColor = 16707821
           AutoEdit = False
@@ -9565,6 +9687,12 @@ object MainForm: TMainForm
       end
     end
   end
+  object Splitter1: TSplitter
+    Left = 192
+    Height = 600
+    Top = 0
+    Width = 5
+  end
   object ChartStyles: TChartStyles
     Styles = <    
       item
@@ -9576,12 +9704,12 @@ object MainForm: TMainForm
         Brush.Color = 16744576
         Text = 'Brückentage'
       end>
-    left = 272
-    top = 192
+    Left = 272
+    Top = 192
   end
   object UserDefinedChartSource: TUserDefinedChartSource
     OnGetChartDataItem = UserDefinedChartSourceGetChartDataItem
-    left = 416
-    top = 192
+    Left = 416
+    Top = 192
   end
 end

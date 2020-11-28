@@ -25,6 +25,9 @@ type
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
+    Notebook: TNotebook;
+    PgYear: TPage;
+    PgRegions: TPage;
     PanelCalcButton:TPanel;
     Label4: TLabel;
     Label5: TLabel;
@@ -32,6 +35,7 @@ type
     PanelRegionDependence: TPanel;
     RgSortRegions: TRadioGroup;
     RgXData: TRadioGroup;
+    Splitter1: TSplitter;
     UserDefinedChartSource: TUserDefinedChartSource;
     PageControl:TPageControl;
     Panel1: TPanel;
@@ -218,6 +222,7 @@ begin
 
     UserDefinedChartSource.PointsNumber := n;
     UserDefinedChartSource.YCount := 2;
+    UserDefinedChartSource.Reset;
     Chart.BottomAxis.Marks.LabelFont.Orientation := 900;
     Chart.Title.Text.Text := EdYear.Text;
 
@@ -315,6 +320,7 @@ begin
 
     UserDefinedChartSource.PointsNumber := endyear - startyear + 1;
     UserDefinedChartSource.YCount := 2;
+    UserDefinedChartSource.Reset;
     Chart.BottomAxis.Marks.LabelFont.Orientation := 0;
     Chart.Title.Text.Text := CbRegion.Text;
 
@@ -361,10 +367,6 @@ begin
   with ResultGrid do begin
     ColWidths[0] := 180;
   end;
-  PanelRegionDependence.Align := alTop;
-  PanelYearDependence.Align := alTop;
-  PanelCalcButton.Align := alTop;
-  PanelCalcButton.Top := Height;
 
   CbRegions.Items.Assign(CbRegion.Items);
   CbRegions.CheckAll(cbChecked);
@@ -426,6 +428,10 @@ begin
       else
         WindowState := wsNormal;
 
+      i := ini.ReadInteger('MainForm', 'PanelWidth', -1);
+      if i <> -1 then
+        Panel1.Width := i;
+
       i := ini.ReadInteger('MainForm', 'PageControl', -1);
       if i <> -1 then
         PageControl.PageIndex := i;
@@ -479,24 +485,11 @@ begin
   finally
     ini.Free;
   end;
-
 end;
 
 procedure TMainForm.RgXDataClick(Sender: TObject);
 begin
-  PanelCalcButton.Hide;  // to avoid flickering
-  case RgXData.ItemIndex of
-    0 : begin
-          PanelRegionDependence.Visible := false;
-          PanelYearDependence.Visible := true;
-        end;
-    1 : begin
-          PanelYearDependence.Visible := false;
-          PanelRegionDependence.Visible := true;
-        end;
-  end;
-  PanelCalcButton.Top := Height;
-  PanelCalcButton.Show;
+  Notebook.PageIndex := RgXData.ItemIndex;
   Calculate;
 end;
 
@@ -548,6 +541,7 @@ begin
     ini.WriteInteger('MainForm', 'Top', Top);
     ini.WriteInteger('MainForm', 'Width', Width);
     ini.WriteInteger('MainForm', 'Height', Height);
+    ini.WriteInteger('MainForm', 'PanelWidth', Panel1.Width);
     ini.WriteBool('MainForm', 'Maximized', WindowState = wsMaximized);
     ini.WriteInteger('MainForm', 'PageControl', PageControl.ActivePageIndex);
     ini.WriteInteger('MainForm', 'Abscissa', RgXData.ItemIndex);
