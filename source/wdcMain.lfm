@@ -9225,9 +9225,10 @@ object MainForm: TMainForm
     0000C0010000C0030000C0030000C0070000C00700008007000080070000800F
     0000800F0000C00F0000C71F0000E71F0000
   }
+  OnActivate = FormActivate
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
-  LCLVersion = '2.1.0.0'
+  LCLVersion = '3.99.0.0'
   object Panel1: TPanel
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -9238,6 +9239,7 @@ object MainForm: TMainForm
     Align = alLeft
     BorderSpacing.Left = 8
     BorderSpacing.Top = 8
+    BorderSpacing.Right = 2
     BorderSpacing.Bottom = 8
     BevelOuter = bvNone
     ClientHeight = 584
@@ -9324,7 +9326,7 @@ object MainForm: TMainForm
       Height = 451
       Top = 88
       Width = 184
-      PageIndex = 1
+      PageIndex = 0
       Anchors = [akTop, akLeft, akRight, akBottom]
       BorderSpacing.Top = 16
       BorderSpacing.Bottom = 8
@@ -9578,37 +9580,39 @@ object MainForm: TMainForm
     end
   end
   object Panel2: TPanel
-    Left = 197
+    Left = 199
     Height = 600
     Top = 0
-    Width = 803
+    Width = 801
     Align = alClient
+    BorderSpacing.Left = 2
     BevelOuter = bvNone
     BorderWidth = 4
     ClientHeight = 600
-    ClientWidth = 803
+    ClientWidth = 801
     TabOrder = 1
     object PageControl: TPageControl
       Left = 4
       Height = 592
       Top = 4
-      Width = 795
-      ActivePage = PgTable
+      Width = 793
+      ActivePage = PgDiagram
       Align = alClient
-      TabIndex = 0
+      TabIndex = 1
       TabOrder = 0
       object PgTable: TTabSheet
         Caption = 'Tabelle'
         ClientHeight = 564
-        ClientWidth = 787
+        ClientWidth = 785
         object ResultGrid: TStringGrid
-          Left = 0
-          Height = 564
-          Top = 0
-          Width = 787
+          Left = 6
+          Height = 552
+          Top = 6
+          Width = 773
           Align = alClient
           AlternateColor = 16707821
           AutoEdit = False
+          BorderSpacing.Around = 6
           DefaultColWidth = 80
           Options = [goFixedVertLine, goFixedHorzLine, goHorzLine, goRangeSelect, goDrawFocusSelected, goThumbTracking, goSmoothScroll, goTruncCellHints, goCellEllipsis]
           TabOrder = 0
@@ -9620,13 +9624,13 @@ object MainForm: TMainForm
       end
       object PgDiagram: TTabSheet
         Caption = 'Diagramm'
-        ClientHeight = 589
-        ClientWidth = 860
+        ClientHeight = 564
+        ClientWidth = 785
         object Chart: TChart
-          Left = 0
-          Height = 589
-          Top = 0
-          Width = 860
+          Left = 6
+          Height = 552
+          Top = 6
+          Width = 773
           AxisList = <          
             item
               Grid.Visible = False
@@ -9671,6 +9675,7 @@ object MainForm: TMainForm
           )
           Title.Visible = True
           Align = alClient
+          BorderSpacing.Around = 6
           Color = clWhite
           object BarSeries: TBarSeries
             Legend.Multiplicity = lmStyle
@@ -9688,10 +9693,10 @@ object MainForm: TMainForm
     end
   end
   object Splitter1: TSplitter
-    Left = 192
+    Left = 194
     Height = 600
     Top = 0
-    Width = 5
+    Width = 3
   end
   object ChartStyles: TChartStyles
     Styles = <    

@@ -50,6 +50,7 @@ type
     procedure CbRegionSelect(Sender:TObject);
     procedure EdEndYearChange(Sender: TObject);
     procedure EdStartYearChange(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
     procedure FormCloseQuery(Sender:TObject; var CanClose:boolean);
     procedure FormCreate(Sender: TObject);
     procedure ResultGridCompareCells(Sender: TObject; ACol, ARow, BCol,
@@ -62,6 +63,7 @@ type
       var AItem: TChartDataItem);
   private
     { private declarations }
+    FActivated: Boolean;
     FUpdateLock: integer;
     procedure CalcByRegions;
     procedure CalcByYears;
@@ -353,6 +355,19 @@ begin
   Calculate;
 end;
 
+procedure TMainForm.FormActivate(Sender: TObject);
+begin
+  if not FActivated then
+  begin
+    ReadFromIni;
+
+    ResultGrid.AutoSizeColumn(0);
+    ResultGrid.ColWidths[0] := ResultGrid.ColWidths[0] + 16;
+
+    FActivated := true;
+  end;
+end;
+
 procedure TMainForm.FormCloseQuery(Sender:TObject; var CanClose:boolean);
 begin
   if CanClose then
@@ -364,14 +379,8 @@ end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
-  with ResultGrid do begin
-    ColWidths[0] := 180;
-  end;
-
   CbRegions.Items.Assign(CbRegion.Items);
   CbRegions.CheckAll(cbChecked);
-
-  ReadFromIni;
 end;
 
 procedure TMainForm.ResultGridCompareCells(Sender: TObject; ACol, ARow, BCol,
